@@ -1,0 +1,71 @@
+<div class="container mt-5" style="max-width: 550px;">
+  <div class="card border-4 shadow-sm rounded-4">
+    <div class="card-body p-4 p-md-5">
+      <h4 class="card-title mb-4 fw-bold text-primary">Nuevo Personaje</h4>
+
+      <form #form="ngForm">
+        <!-- ID oculto para cumplir con la estructura del modelo al insertar -->
+        <input type="hidden" id="idPersonaje" name="cajaidpersonaje" #cajaidpersonaje value="0">
+
+        <!-- Campo: nombre -->
+        <div class="form-floating mb-3">
+          <input 
+            type="text" 
+            class="form-control border-4 bg-light rounded-3" 
+            id="nombre" 
+            name="cajanombre" 
+            #cajanombre
+            placeholder="Nombre del personaje" 
+            required>
+          <label for="nombre" class="text-muted">Nombre del personaje</label>
+          <div class="invalid-feedback">
+            Por favor, introduce un nombre.
+          </div>
+        </div>
+
+        <!-- Campo: imagen (URL) -->
+        <div class="form-floating mb-3">
+          <input 
+            type="url" 
+            class="form-control border-0 bg-light rounded-3" 
+            id="imagen" 
+            name="cajaimagen" 
+            #cajaimagen
+            placeholder="https://ejemplo.com" 
+            required>
+          <label for="imagen" class="text-muted">URL de la imagen</label>
+          <div class="invalid-feedback">
+            Introduce una URL válida para la imagen.
+          </div>
+        </div>
+
+        <!-- Campo: Pelicula -->
+        <div class="form-floating mb-3">
+          <input 
+            type="text" 
+            class="form-control border-4 bg-light rounded-3" 
+            id="pelicula" 
+            name="cajapelicula" 
+            #cajapelicula
+            placeholder="Nombre de la pelicula" 
+            required>
+          <label for="pelicula" class="text-muted">Nombre de la pelicula</label>
+          <div class="invalid-feedback">
+            Por favor, introduce una pelicula.
+          </div>
+        </div>
+
+        <br><br>
+        <!-- Botones de acción -->
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+          <button type="reset" class="btn btn-light rounded-3 px-4">Limpiar</button>
+          <button (click)="crearPixar()" type="submit" class="btn btn-primary rounded-3 px-4 fw-semibold">
+            Guardar Personaje
+          </button>
+        </div>
+      </form>
+      <br><br>
+      <p>{{mensajeProceso}}</p>
+    </div>
+  </div>
+</div>

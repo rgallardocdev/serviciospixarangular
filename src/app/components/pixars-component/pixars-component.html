@@ -1,0 +1,42 @@
+<div class="card h-100 shadow-sm border-0" style="width: 18rem;">
+    @for(personaje of arrayPixars; track personaje){
+        <!-- Imagen del personaje -->
+        <img 
+            [src]="personaje.imagen" 
+            [alt]="personaje.nombre" 
+            class="card-img-top object-fit-cover" 
+            style="height: 220px;"
+        >
+
+        <div class="card-body d-flex flex-column">
+            <!-- Nombre del personaje -->
+            <h5 class="card-title fw-bold mb-1">{{ personaje.nombre }}</h5>
+            
+            <!-- Película como etiqueta o subtítulo -->
+            <p class="card-text text-body-secondary small mb-3">
+            <i class="bi bi-film"></i> {{ personaje.pelicula }}
+            </p>
+
+            <!-- Pie de tarjeta opcional para acciones -->
+            <div class="card-footer bg-transparent border-top-0 d-flex justify-content-end gap-2 pb-3">
+                <button (click)="eliminarPixar(personaje.idPersonaje)" class="btn btn-sm btn-outline-danger">Eliminar</button>
+                
+            </div>
+
+            <!-- Botón de acción (opcional, usando el idPersonaje) -->
+            <!-- <a [routerLink]="['/personaje', personaje.idPersonaje]" class="btn btn-primary mt-auto">
+            Ver detalles
+            </a> -->
+        </div>
+        
+        <div class="card-footer bg-transparent border-top-0 text-end">
+            <small class="text-body-secondary">ID: #{{ personaje.idPersonaje }}</small>
+        </div>
+    }  @empty {
+      <div class="col-12">
+        <div class="alert alert-info" role="alert">
+          No hay Personaje registrados actualmente.
+        </div>
+      </div>
+    }
+</div>
